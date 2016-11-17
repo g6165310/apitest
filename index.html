@@ -5,11 +5,42 @@
 <script>
 $(document).ready(function(){
     $("button").click(function(){
-        $.get("https://www.plurk.com/OAuth/request_token?oauth_nonce=92278192&oauth_timestamp=1479394472&oauth_consumer_key=hqx2K6WGmAhE&oauth_signature_method=HMAC-SHA1&oauth_version=1.0&oauth_signature=UUTLkhVOEnub5GagwC5mGbELmaY%3D", function(response){
-            alert("yes");
-        });
+        var url = "https://www.plurk.com/OAuth/request_token?oauth_nonce=92278192&oauth_timestamp=1479394472&oauth_consumer_key=hqx2K6WGmAhE&oauth_signature_method=HMAC-SHA1&oauth_version=1.0&oauth_signature=UUTLkhVOEnub5GagwC5mGbELmaY%3D";
+        var xhr = createCORSRequest('GET', url);
+        if (!xhr) {
+            throw new Error('CORS not supported');
+        }
+        xhr.onload = function() {
+            var responseText = xhr.responseText;
+            console.log(responseText);
+            // process the response.
+        };
+        xhr.send();
     });
 });
+
+function createCORSRequest(method, url) {
+  var xhr = new XMLHttpRequest();
+  if ("withCredentials" in xhr) {
+    // Check if the XMLHttpRequest object has a "withCredentials" property.
+    // "withCredentials" only exists on XMLHTTPRequest2 objects.
+    xhr.open(method, url, true);
+
+  } else if (typeof XDomainRequest != "undefined") {
+    // Otherwise, check if XDomainRequest.
+    // XDomainRequest only exists in IE, and is IE's way of making CORS requests.
+    xhr = new XDomainRequest();
+    xhr.open(method, url);
+
+  } else {
+    // Otherwise, CORS is not supported by the browser.
+    xhr = null;
+  }
+
+  return xhr;
+}
+
+
 </script>
 </head>
 <body>
