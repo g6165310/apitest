@@ -7,7 +7,7 @@ $(document).ready(function(){
     $("button").click(function(){
         $.post("http://www.plurk.com/OAuth/request_token",
         {
-          oauth_consumer_key:"hqx2K6WGmAhE"
+          oauth_consumer_key:"hqx2K6WGmAhE",
           oauth_consumer_secret:"RIHPGkY0NgglfeTv8zjja95mm0LypjBe"
         },
         function(oauth_callback_confirmed,oauth_token_secret,oauth_token){
