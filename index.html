@@ -5,13 +5,8 @@
 <script>
 $(document).ready(function(){
     $("button").click(function(){
-        $.post("https://www.plurk.com/OAuth/request_token",
-        {
-          oauth_consumer_key:"hqx2K6WGmAhE",
-          oauth_consumer_secret:"RIHPGkY0NgglfeTv8zjja95mm0LypjBe"
-        },
-        function(oauth_callback_confirmed,oauth_token_secret,oauth_token){
-           console.log(oauth_token,oauth_token_secret);
+        $.get("http://www.plurk.com/OAuth/request_token?oauth_nonce=92278192&oauth_timestamp=1479394472&oauth_consumer_key=hqx2K6WGmAhE&oauth_signature_method=HMAC-SHA1&oauth_version=1.0&oauth_signature=UUTLkhVOEnub5GagwC5mGbELmaY%3D", function(response){
+            alert("yes");
         });
     });
 });
