@@ -41,6 +41,12 @@
 
     <h2>User's profile information</h2>
     <div id="profile"></div>
+        <div id="content">
+      <div class="g-post"></div>
+    </div>
+    <script>
+      gapi.post.go("content");
+    </script>
 
     <h2>User's friends that are visible to this app</h2>
     <div id="visiblePeople"></div>
@@ -205,5 +211,8 @@ function startApp() {
 }
 </script>
 <script src="https://apis.google.com/js/client:platform.js?onload=startApp"></script>
+    <script>
+      {"parsetags": "explicit"}
+    </script>
 </body>
 </html>
